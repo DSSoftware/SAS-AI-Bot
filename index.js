@@ -61,7 +61,7 @@ bot.on('message', async (msg) => {
         (async () => {
 
             if (msg.text === 'Clear History') {
-                bot.sendMessage(chatId, `📃 You have cleared the history.`, { parseMode: 'Markdown' });
+                bot.sendMessage(chatId, `📃 You have cleared the history.`, { parseMode: 'MarkdownV2' });
                 cache.delete(msg.from.id);
                 return;
             }
@@ -88,7 +88,7 @@ bot.on('message', async (msg) => {
 
             const originalMessageID = msg.message_id;
 
-            const prompt = `Here's a small piece of previous conversation for you, but might be not full:\n${context.slice(-500)}\nYour goal is to provide answer no matter what. Please, respond to this request:\n${msg.text}`;
+            const prompt = `Here's a small piece of previous conversation for you, but might be not full:\n${context.slice(-500)}\nPlease, use HTML for formatting instead of markdown, that is important. Your goal is to provide answer no matter what. Please, respond to this request:\n${msg.text}`;
 
             const result = await model.generateContent([prompt]);
 
@@ -105,7 +105,7 @@ bot.on('message', async (msg) => {
             })
 
             bot.sendMessage(chatId, response, {
-                parse_mode: 'MarkdownV2',
+                parse_mode: 'html',
                 reply_to_message_id: originalMessageID,
                 reply_markup: {
                     resize_keyboard: true,
