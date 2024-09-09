@@ -67,7 +67,7 @@ bot.on('message', async (msg) => {
             }
             
             if(!config.whitelisted.includes(msg.from.id)){
-                bot.sendMessage(chatId, `❌ You are not whitelisted.\nForward this message to @artem2584 to get whitelisted.\n\nUser ID: \`${msg.from.id}\``, { parseMode: 'Markdown' });
+                bot.sendMessage(chatId, `❌ You are not whitelisted.\nForward this message to @artem2584 to get whitelisted.\n\nUser ID: \`${msg.from.id}\``, { parseMode: 'MarkdownV2' });
                 return;
             }
 
@@ -105,7 +105,7 @@ bot.on('message', async (msg) => {
             })
 
             bot.sendMessage(chatId, response, {
-                parse_mode: 'Markdown',
+                parse_mode: 'MarkdownV2',
                 reply_to_message_id: originalMessageID,
                 reply_markup: {
                     resize_keyboard: true,
