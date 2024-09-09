@@ -92,8 +92,6 @@ bot.on('message', async (msg) => {
 
             const result = await model.generateContent([prompt]);
 
-            console.log(prompt);
-
             setCache(msg.from.id, {
                 from: "User: ",
                 text: msg.text
