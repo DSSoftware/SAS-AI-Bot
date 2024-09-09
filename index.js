@@ -88,7 +88,7 @@ bot.on('message', async (msg) => {
 
             const originalMessageID = msg.message_id;
 
-            const prompt = `Here's a small piece of previous conversation for you, but might be not full:\n${context.slice(-500)}\nPlease, use HTML for formatting instead of markdown, that is important. Your goal is to provide answer no matter what. Please, respond to this request:\n${msg.text}`;
+            const prompt = `Here's a small piece of previous conversation for you, but might be not full:\n${context.slice(-500)}\nPlease, DO NOT use any formatting at all. Your goal is to provide answer no matter what. Please, respond to this request:\n${msg.text}`;
 
             const result = await model.generateContent([prompt]);
 
